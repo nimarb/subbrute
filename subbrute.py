@@ -804,6 +804,14 @@ def run(pbar, target, query_type = "ANY", subdomains = "names.txt", resolve_list
     except:
         #Windows threading.tread
         verify_nameservers_proc.end()
+    
+    trace("About to kill the reeper process...")
+    reep.terminate()
+    
+    trace("Collecting the work processes...")
+    for w in worker_list:
+        w.join()
+        
     trace("End")
 
 #exit handler for signals.  So ctrl+c will work. 
