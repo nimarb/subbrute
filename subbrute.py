@@ -165,7 +165,7 @@ class verify_nameservers(multiprocessing.Process):
         self.resolver_q = resolver_q
         self.query_type = query_type
         self.resolver_list = resolver_list
-        self.resolver = resolver()
+        self.resolver = resolver([])
         #The domain provided by the user.
         self.target = target
         #Resolvers that will work in a pinch:
@@ -944,7 +944,6 @@ def main():
             trace("dnslib:",dnslib.version)
             trace(target, record_type, options.subs, options.resolvers, options.process_count, options.print_data, output, json_output)
             print_target(target, record_type, options.subs, options.resolvers, options.process_count, options.print_data, output, json_output)
-
 
 if __name__ == "__main__":
     main()
